@@ -15,7 +15,7 @@ To start a simulation, first specify the number of nodes and the initial malicio
 
 Dynamic changes during a simulation:
 - You can flip the honesty of nodes with the `Botnet` function. If you write a positive number, it will turn that many malicious nodes into bad nodes, and if you write a negative number, it will flip that many honest nodes into bad nodes.
-- The `Sybil` function adds the written number of either honest or malicious nodes to the network, based on the sign of the integer (positive for honest, negative for malicious nodes)
+- The `Sybil` function adds the written number of either honest or malicious nodes to the network, based on the sign of the integer (positive for honest, negative for malicious nodes).
 - The `Remove` function is similar to the `Sybil` one, but it removes the given number of honest or malicious nodes from the network.
 - The `Track node` function tracks the reputation value of the closest honest node to the giver value on the bottom two graphs with a green marker.
 
