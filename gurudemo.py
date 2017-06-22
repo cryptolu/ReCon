@@ -50,7 +50,7 @@ def RBSimulation():
 
     data.proprate = 10
     fig=plt.Figure()
-    fig.set_size_inches(26,17,forward=True)
+    fig.set_size_inches(16,11,forward=True)
     repfig = fig.add_subplot(2,2,3)
     repfig.set_ylabel("Reputation")
     #repfig.xlabel("Nodes in order by Reputation")
@@ -354,7 +354,7 @@ def RBSimulation():
 
 
     root = Tk.Tk()
-    root.geometry('{}x{}'.format(2500, 1400))
+    root.geometry('{}x{}'.format(1700, 900))
     label = Tk.Label(root,text="Guru Simulation").grid(column=0, row=0, columnspan=4)
     canvas1 = FigureCanvasTkAgg(fig, master=root)
     canvas1.get_tk_widget().grid(column=0,row=1,rowspan=45)
