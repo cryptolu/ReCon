@@ -25,4 +25,4 @@ The graphs describe the following:
 - The main graph is the success rate of the protocol based on the last 100 rounds.
 - The bottom left graph is the current ordered reputation distribution in blue and the original reputation distribution in red.
 - The bottom right graph is the nodes grouped into 1/10th of all nodes sized tuples, ordered by reputation.
-- The small graph under the options is the overall maliciousness of the network
+- The small graph under the options is the overall maliciousness of the network.
