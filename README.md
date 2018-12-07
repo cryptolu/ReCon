@@ -1,6 +1,6 @@
-# Guru
+# ReCon
 
-Guru is a Universal Reputation Module for Distributed Consensus Protocols. This is the simulation of the protocol written in Python 2.7 based on our paper. Here is a link to a short simulation as well, where we present how to use the simulator:
+ReCon is a Universal Reputation Module for Distributed Consensus Protocols. This is the simulation of the protocol written in Python 2.7 based on our paper. Here is a link to a short simulation as well, where we present how to use the simulator:
 https://drive.google.com/open?id=0B-AIuoQFeJqxOFJyaW9BZm53VE0
 
 ## Required Libraries
