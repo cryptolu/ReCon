@@ -11,7 +11,7 @@ https://drive.google.com/open?id=0B-AIuoQFeJqxOFJyaW9BZm53VE0
 
 ## Running the simulation
 
-Simply compile the `gurudemo.py` python file, and use the graphical interface.
+Simply compile the `recondemo.py` python file, and use the graphical interface.
 To start a simulation, first specify the number of nodes and the initial maliciousness `alpha_0` (a value between 0 and 1), and choose your preferred selection function and external reputation, then click on `Start!`.
 
 Dynamic changes during a simulation:
