@@ -45,7 +45,7 @@ def RBSimulation():
 
     #for i in range(0,data.M):
      #   tmprepu = float(InitialRepu(data.dist))
-      #  data.nodes.append(guruNode(tmprepu,random.random()<((alpha0-0.05)*(1-tmprepu)+0.05)))
+      #  data.nodes.append(reconNode(tmprepu,random.random()<((alpha0-0.05)*(1-tmprepu)+0.05)))
     #data.nodes.sort(key = lambda x: x.repu, reverse=True)   
 
     data.proprate = 10
@@ -58,7 +58,7 @@ def RBSimulation():
     
     sucfig.set_ylim(ymax=100,ymin=0)
     #faultfig = fig.add_subplot(2,2,4)
-    barfig = fig.add_subplot(2,2,4,axisbg='blue')
+    barfig = fig.add_subplot(2,2,4,facecolor='blue')
     repfig.set_ylabel("Reputation")
     repfig.set_xlabel("Nodes ordered by reputation")
 
@@ -72,7 +72,7 @@ def RBSimulation():
     fig.tight_layout()
     
     fig2 = plt.Figure()
-    malfig = fig2.add_subplot(1,1,1,axisbg='blue')
+    malfig = fig2.add_subplot(1,1,1,facecolor='blue')
     fig2.set_size_inches(5,1.5,forward=True)
     malfig.tick_params(
     axis='both', which='both', bottom='off', top='off', left='off', right='off', labelbottom='off', labelleft='off')
@@ -112,7 +112,7 @@ def RBSimulation():
         data.alpha0 = float(alpha00)
         for i in range(0,data.M):
             tmprepu = float(InitialRepu(data.dist))
-            data.nodes.append(guruNode(tmprepu,random.random()<((data.alpha0-0.05)*(1-tmprepu)+0.05)))
+            data.nodes.append(reconNode(tmprepu,random.random()<((data.alpha0-0.05)*(1-tmprepu)+0.05)))
         data.nodes.sort(key = lambda x: x.repu, reverse=True)
         if select == 'Filter':
             data.sel = "filter"
@@ -166,10 +166,10 @@ def RBSimulation():
             propsets=[ps*(data.M/data.proprate) for ps in range(0,10)]
             proportions=[]
             allbadnodes = 0
-            for i in range(0,data.proprate):
+            for l in range(0,data.proprate):
                 badnode = 0
                 for j in range(0,data.M/data.proprate):
-                    if data.nodes[i*data.M/data.proprate+j].malicious:
+                    if data.nodes[l*data.M/data.proprate+j].malicious:
                         badnode += 1
                         allbadnodes += 1
                 proportions.append(float(badnode)/float(data.M/data.proprate))
@@ -197,7 +197,7 @@ def RBSimulation():
 
             sucfig.plot(data.cyclesuccessrate) 
             #faultfig.plot(data.trustedfaultynoderate)
-            barfig.bar(propsets,[pp*(data.M/data.proprate) for pp in proportions],width=data.M/data.proprate,color='orange')
+            barfig.bar(propsets,[pp*(data.M/data.proprate) for pp in proportions],width=data.M/data.proprate,color='orange',align='edge')
             for vline in range(1,10):
                 barfig.axvline(x=vline*(data.M/data.proprate),color='black')
             
@@ -210,7 +210,7 @@ def RBSimulation():
                     ps += 1
                 ps = ps-1
                 tn_local = ((ps+1)*(data.M/data.proprate)) - tn
-                barfig.bar(ps*(data.M/data.proprate),5,bottom=tn_local-1,width=(data.M/data.proprate),color='green')
+                barfig.bar(ps*(data.M/data.proprate),5,bottom=tn_local-1,width=(data.M/data.proprate),color='green',align='edge')
                 repfig.plot(tn, data.nodes[tn].repu, color='g',marker = "o")
                 #print(str(tn) + ' ' + str(tn_local))
             fig.tight_layout()
@@ -249,10 +249,10 @@ def RBSimulation():
     def SybilJoin(sybilnodes):
         if int(sybilnodes) < 0:
             for bd in range(0,abs(int(sybilnodes))):
-                data.nodes.append(guruNode(0,True))
+                data.nodes.append(reconNode(0,True))
         else:
             for bd in range(0,abs(int(sybilnodes))):
-                data.nodes.append(guruNode(0,False))
+                data.nodes.append(reconNode(0,False))
         data.M = len(data.nodes)
         if data.M > 0:
             data.toStart = True
@@ -328,7 +328,7 @@ def RBSimulation():
         allbadnodes = float(sum(int(nd.malicious) for nd in data.nodes))/data.M
         Tk.Label(root, text=("%.2f" % round(allbadnodes,2))).grid(column=1,row=44,sticky="w")
         Tk.Label(root, text=("%.2f" % round(1-allbadnodes,2))).grid(column=3,row=44,sticky="e")
-        malfig.barh(0,allbadnodes,height=1, color='orange')
+        malfig.barh(0,allbadnodes,height=1, color='orange',align='edge')
 
     def toTrackFunc(tracked):
         for nd in data.nodes:
@@ -355,7 +355,7 @@ def RBSimulation():
 
     root = Tk.Tk()
     root.geometry('{}x{}'.format(1700, 900))
-    label = Tk.Label(root,text="Guru Simulation").grid(column=0, row=0, columnspan=4)
+    label = Tk.Label(root,text="ReCon Simulation").grid(column=0, row=0, columnspan=4)
     canvas1 = FigureCanvasTkAgg(fig, master=root)
     canvas1.get_tk_widget().grid(column=0,row=1,rowspan=45)
    
@@ -582,7 +582,7 @@ def InitialRepu(dist):
    
 
 
-class guruNode:
+class reconNode:
     global data
     def __init__(self, repu, malicious):
         self.repu = repu
