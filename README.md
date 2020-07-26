@@ -3,6 +3,9 @@
 ReCon is a Universal Reputation Module for Distributed Consensus Protocols. This is the simulation of the protocol written in Python 2.7 based on our paper. Here is a link to a short simulation as well, where we present how to use the simulator:
 https://drive.google.com/open?id=0B-AIuoQFeJqxOFJyaW9BZm53VE0
 
+The full paper can be found on the following link: 
+https://doi.org/10.1016/j.pmcj.2019.101109
+
 ## Required Libraries
 
 - SciPy
